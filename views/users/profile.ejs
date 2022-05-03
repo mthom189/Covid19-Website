@@ -1,0 +1,14 @@
+<%- include('../partials/header.ejs')%>
+<div class = "content">
+    
+    <h2>Welcome, <%=user.firstName%></h2>
+    <%if(tests.length) {%>
+        <p>You have scheduled the following tests:</p>
+        <%tests.forEach(test => {%>
+            <a href = '/connection/<%= test.id%>'><p>Test for <%=test.title%> at <%=test.startTime%></p></a>
+        <%});
+    } else {%>
+        <p>You have not scheduled any tests</p>
+    <%}%>
+    </div>
+    <%- include('../partials/footer.ejs')%>

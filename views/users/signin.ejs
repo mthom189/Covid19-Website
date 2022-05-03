@@ -1,0 +1,21 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <form method = "POST" action = "/users/signin">
+            <table>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="text" id="email" name="email" value = "" class = "fixed-width"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="password" id="password" name="password" value = "" class = "fixed-width"></td>
+                </tr>
+                <tr>
+                    <td><td colspan="2" class = "align-right"><button id="button">Sign In</button></td></td>
+                </tr>
+            </table>
+        </form>
+        
+
+    </div>
+<%- include('../partials/footer.ejs')%>

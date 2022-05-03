@@ -1,0 +1,49 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <%let labTest = [];%>
+        <%let rapidPCR = [];%>
+        <%let rapidAntigen = []%>
+        <%if(tests.length) {%>
+        <%tests.forEach(test=>{%>
+                <%if(test.catagory === 'LabTest'){%>
+                    <%labTest.push(test);%>
+                    <%console.log('Lab Test:' + test);%>
+                <%} else if(test.catagory === 'Rapid'){%>
+                    <%rapidPCR.push(test);%>
+                    <%console.log('Rapid PCR Test:' + test);%>
+                <%}else {%>
+                    <%rapidAntigen.push(test);%>
+                    <%console.log('Rapid Antigen Test' + test);%>
+                <%}});%>
+                <h1>Lab Test</h1>
+                    <%if(labTest.length){%>
+                <%labTest.forEach(test=>{%>
+                    <%console.log(test._id)%>
+                    <a href = "/connection/<%= test._id%>"><p><%= test.date.toDateString()%>: <%= test.patientName%> at <%= test.startTime%></p></a>
+                <%});} else{%> 
+                    <p>No tests scheduled at this time</p>
+                    <%}%>
+                    
+                <h1>Rapid PCR Test</h1>
+                <%if(rapidPCR.length){%>
+                    <%rapidPCR.forEach(test=>{%>
+                        <a href = "/connection/<%= test._id%>"><p><%= test.date.toDateString()%>: <%= test.patientName%> at <%= test.startTime%></p></a>
+                    <%});} else{%> 
+                        <p>No tests scheduled at this time</p>
+                        <%}%>
+                
+                <h1>Rapid Antigen Test</h1>
+                <%if(rapidAntigen.length){%>
+                    <%rapidAntigen.forEach(test=>{%>
+                        <a href = "/connection/<%= test._id%>"><p><%= test.date.toDateString()%>: <%= test.patientName%> at <%= test.startTime%></p></a>
+                    <%});} else{%> 
+                        <p>No tests scheduled at this time</p>
+                        <%}%>
+            
+
+        <%}else{ %>
+            <p>There are no tests to display</p>
+        <%}%>
+            
+    </div>
+<%- include('../partials/footer.ejs')%>

@@ -1,0 +1,48 @@
+<%- include('../partials/header.ejs')%>
+<div class = "newContent">
+    <form action = '/connection' method = 'POST'>
+        <table>
+            <tr>
+                <td><label for="patientName">Patient's Full Name</label></td>
+                <td><input type="text" id="patientName" name="patientName" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">Preferred first name</label></td>
+                <td><input type="text" id="title" name="title" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td class = "align-top"><label for="catagory">Test Type</label></td>
+                <td><select name="catagory" id="catagory">
+                    <option value="LabTest">Lab test (PCR/ NAAT)</option>
+                    <option value="Rapid">Rapid-result (PCR)</option>
+                    <option value="Antigen">Rapid-result (antigen)</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="date">Date</label></td>
+                <td><input type="datetime-local" id="date" name="date" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="startTime">Start Time</label></td>
+                <td><input type="text" id="startTime" name="startTime" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="endTime">End Time (Should be 15 mins after start time)</label></td>
+                <td><input type="text" id="endTime" name="endTime" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="imgSrc">Image URL of your face for identification</label></td>
+                <td><input type="text" id="imgSrc" name="imgSrc" class = "fixed-width"></td>
+            </tr>
+            <tr>
+                <td><label for="concerns">Any concerns? (if none, put 'none')</label></td>
+                <td><input type="text" id="concerns" name="concerns" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" class = "align-right"><button id="button">Submit</button></td>
+            </tr>
+        </table>        
+    </form>
+
+    </div>
+    <%- include('../partials/footer.ejs')%>

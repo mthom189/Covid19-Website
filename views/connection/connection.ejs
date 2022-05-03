@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <h1 id="connectionHeader"><%=test.title%>'s Test Information</h1>
+        <small>Posted <%= test.createdAt.toLocaleString()%></small>
+        <br>
+        <!-- determine test type-->
+        <%if(test.catagory === 'LabTest'){ test.catagory = 'Lab test (PCR/ NAAT)'}%>
+        <%if(test.catagory === 'Rapid'){ test.catagory = 'Rapid-result (PCR)'}%>
+        <%if(test.catagory === 'Antigen'){ test.catagory = 'Rapid-result (Antigen)'}%>
+        <%if (test.imgSrc === ''){%>
+            <img src="/css/images/guestuser.jpeg" alt = "Guest Profile Image" type="" id="profilePhoto"> <br>
+        <%} else{%>
+            <img src="<%= test.imgSrc%>" alt = "Patient Profile Image" type="" id="profilePhoto"> <br>
+        <%}%>
+        <medium>Name: <%= test.title%></medium> <br>
+        <medium>Test Type: <%= test.catagory%></medium> <br>
+        <medium>Concerns: <%= test.concerns%></medium><br>
+        <medium>Date: <%= test.date.toDateString().split('T0')%></medium> <br>
+        <medium>Time: <%= test.startTime%> to <%= test.endTime%></medium>
+        <form>
+            <button type="submit" id="editButton" formmethod="GET" formaction="/connection/<%= test._id%>/edit">Edit</button>
+            <button type="submit" id="deleteButton" formmethod="POST" formaction="/connection/<%= test._id%>?_method=DELETE">Delete</button>
+        </form>
+        
+    </div>
+<%- include('../partials/footer.ejs')%>

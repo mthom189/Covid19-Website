@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Covid-19</title>
+</head>
+<body>
+    <nav>
+        <h2>Covid-19 Information & Testing</h2>
+        <a href='/'>Home</a>
+        <!--The guest can still see other users' scheduled tests-->
+        <a href='/connection'>Tests Scheduled</a>
+        <!--So the user knows this is a website where they are able to schedule a test
+        (after they sign in)-->
+        <a href='/connection/newConnection'>Schedule a Test</a>
+        <%if(!user){%>
+        <a href = "/users/signin" id = "userLinks">Sign In</a>
+        <a href = "/users/signup" id = "userLinks">Sign Up</a>
+        <%} else {%>
+        <a href='/users/profile'>Profile</a>
+        <a href='/users/logout'>Logout</a>
+        <%}%>
+        
+    </nav>
+
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>
+    
+    <% if(successMessages.length > 0) {%>
+        <% successMessages.forEach(message=>{%>
+        <div class='success'>
+            <%=message%>
+        </div>
+        <%});%>
+    <%}%>
